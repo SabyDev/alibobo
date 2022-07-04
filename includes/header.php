@@ -9,7 +9,14 @@
 </head>
 <body>
    <header>
-    <h1>Header</h1>
+    <nav>
+        <ul>
+            <li style="color:blue";><a href="index.php?page=accueil">Accueil</a></li>
+            <li style="color:blue"><a href="index.php?page=articles">Articles</a></li>
+            <li style="color:blue"><a href="index.php?page=inscription">Inscription</a></li>
+            <li style="color:blue"><a href="index.php?page=login">Login</a></li>
+        </ul>
+    </nav>
    </header>
 </body>
 </html>
