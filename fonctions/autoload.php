@@ -5,7 +5,7 @@ function autoLoad(string $pattern) {
 
     if ($fichiersFonctionsPHP !== false) {
         for ($i = 0 ; $i < count($fichiersFonctionsPHP) ; $i++) {
-            if ($fichiersFonctionsPHP[$i] !== "./functions/autoLoad.php")
+            if ($fichiersFonctionsPHP[$i] !== "./fonctions/autoLoad.php")
                 require_once $fichiersFonctionsPHP[$i];
         }
 
