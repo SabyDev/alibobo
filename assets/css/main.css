@@ -1,6 +1,6 @@
-main{
+main {
     min-height: 500px;
-    background-color: antiquewhite;
-    width: 100%;
-    margin:  0 auto;
+    background-color: #DDD;
+    width: 80%;
+    margin: 0 auto;
 }
