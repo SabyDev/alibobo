@@ -20,12 +20,11 @@ if (!empty($_GET['articleId']) && is_numeric($_GET['articleId'])) {
     if (!empty($_POST['submitted'])) {
 
         // Faille XSS enlève les espace avec trim et les balises avec strip_tags pour eviter l'injection de code
-        $categorie = trim(strip_tags($_POST['libelle']));
+        $categorie = trim(strip_tags($_POST['id_categorie']));
         $reference = trim(strip_tags($_POST['reference']));
         $designation = trim(strip_tags($_POST['designation']));
         $description = trim(strip_tags($_POST['description']));
-        $puht = trim(strip_tags($_POST['puht']));
-        $tva = trim(strip_tags($_POST['indice']));
+        $puht = trim(strip_tags($_POST['id_tva']));
         $qtestock = trim(strip_tags($_POST['qtestock']));
         $qtestocksecu = trim(strip_tags($_POST['qtestocksecu']));
         $masse = trim(strip_tags($_POST['masse']));
@@ -36,7 +35,7 @@ if (!empty($_GET['articleId']) && is_numeric($_GET['articleId'])) {
         // Si pas d'erreur modification. un envoie la requete de modif a la bdd
         if (count($errors) === 0) {
 
-            $requete_update = "  UPDATE `articles` SET `designation` = :designation, `description` = :description, `puht` = :puht, `reference` = :reference, `qtestock` = :qtestock, `qtestocksecu` = :qtestocksecu, `masse` = :masse, `libelle` = :libelle, `indice` = :indice WHERE id_article =  $id";
+            $requete_update = "UPDATE `articles` SET `designation` = :designation, `description` = :description, `puht` = :puht, `reference` = :reference, `qtestock` = :qtestock, `qtestocksecu` = :qtestocksecu, `masse` = :masse, `id_categorie` = :id_categorie, `id_tva` = :id_tva WHERE id_article =  $id";
             $query = $pdo->query($sql);
             $query->bindValue(':libelle', $categorie, PDO::PARAM_STR);
             $query->bindValue(':reference', $reference, PDO::PARAM_STR);
@@ -49,14 +48,14 @@ if (!empty($_GET['articleId']) && is_numeric($_GET['articleId'])) {
             $query->bindValue(':masse', $masse, PDO::PARAM_INT);
             $query->execute();
             echo "<script>alert(`Article modifié`)</script>";
-            echo "<script>window.location.replace('http://localhost/DWWM-Vernon-2022-PHP-Alibobo/index.php?page=articlesAdmin')</script>";
+            echo "<script>window.location.replace('http://localhost/alibobo/alibobo/index.php?page=articlesAdmin')</script>";
         }
     }
     // var_dump($query);
     // var_dump($catChoix);
 ?>
     <!-- on edit par exemple l'article pour poouvoir proceder à la modification -->
-    <form action="index.php?page=update" method="post">
+    <form action="" method="post">
     <div>
             <?php
             // pour offrir deux option à status création d'un tableau avec les 2 choix
@@ -153,8 +152,7 @@ if (!empty($_GET['articleId']) && is_numeric($_GET['articleId'])) {
             <input type="text" id="masse" name="masse" value="<?= $query['masse'] ?>" />
         </div>
         <div>
-            <input type="submit" name="submitted" value="modifier">
-            <input type="submit" value="Supprimer" />
+            <input type="submit" name="submitted" value="modifier">           
         </div>
 
     </form>

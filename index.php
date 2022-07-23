@@ -1,21 +1,24 @@
-
 <?php
-// pour definir le reseau horaire
+
+session_start();
+
+require_once './functions/autoLoad.php';
+autoLoad("*.php");
+
+require __DIR__ . '/vendor/autoload.php';
+
+// Définir le fuseau horaire dans lequel le serveur se trouve
 date_default_timezone_set('Europe/Paris');
 
-// pour savoir dans quel fuseau horaire dans lequel se trouve le server
-$script_tz = date_default_timezone_get();
+/* Utiliser include ou require
+* include renvoie un avertissement simple en cas d'erreur
+* require renvoie une erreur fatale et arrête l'exécution du script
+*/
 
-// première methode avec include les erreurs peuvent passer
-// include './includes/header.php';
-// include './includes/main.php';
-// include './includes/footer.php';
+if (verifierAdmin()) 
+    require_once './includes/headerAdmin.php';
+else 
+    require_once './includes/header.php';
 
-// deuxième methode require est plus strict ne laisse passer aucune erreur fait tout planter
-require_once './includes/header.php';
 require_once './includes/main.php';
 require_once './includes/footer.php';
-
-
-
-?>

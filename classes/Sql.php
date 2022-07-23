@@ -6,11 +6,7 @@ class Sql
     private string $userPassword = "";
     private string $database = "alibobo";
     private object $connexion;
-    private string $nom = "";
-    private string $prenom = "";
-    private string $email = "";
-    private string $mdp1 = "";
-
+    
     public function __construct()
     {
         try {
@@ -62,5 +58,4 @@ class Sql
         }
         }
     }
-
-
+    

@@ -24,7 +24,7 @@ if (!empty($_GET['articleId']) && is_numeric($_GET['articleId'])) {
       $query->execute();
       // une fois la requete executé on retourne sur une autre page
       echo "<script>alert(`vous avez bien supprimé l'article`)</script>";
-      echo "<script>window.location.replace('http://localhost/DWWM-Vernon-2022-PHP-Alibobo/index.php?page=articlesAdmin')</script>";
+      echo "<script>window.location.replace('http://localhost/alibobo/alibobo/')</script>";
    }
 } else {
       // si erreur on arrete le code ab=vec message d'erreur
