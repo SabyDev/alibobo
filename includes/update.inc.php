@@ -24,7 +24,8 @@ if (!empty($_GET['articleId']) && is_numeric($_GET['articleId'])) {
         $reference = trim(strip_tags($_POST['reference']));
         $designation = trim(strip_tags($_POST['designation']));
         $description = trim(strip_tags($_POST['description']));
-        $puht = trim(strip_tags($_POST['id_tva']));
+        $puht = trim(strip_tags($_POST['puht']));
+        $tva = trim(strip_tags($_POST['indice']));
         $qtestock = trim(strip_tags($_POST['qtestock']));
         $qtestocksecu = trim(strip_tags($_POST['qtestocksecu']));
         $masse = trim(strip_tags($_POST['masse']));
@@ -37,10 +38,9 @@ if (!empty($_GET['articleId']) && is_numeric($_GET['articleId'])) {
 
             $requete_update = "UPDATE `articles` SET `designation` = :designation, `description` = :description, `puht` = :puht, `reference` = :reference, `qtestock` = :qtestock, `qtestocksecu` = :qtestocksecu, `masse` = :masse, `id_categorie` = :id_categorie, `id_tva` = :id_tva WHERE id_article =  $id";
             $query = $pdo->query($sql);
-            $query->bindValue(':libelle', $categorie, PDO::PARAM_STR);
+           
             $query->bindValue(':reference', $reference, PDO::PARAM_STR);
             $query->bindValue(':designation', $designation, PDO::PARAM_STR);
-            $query->bindValue(':indice', $tva, PDO::PARAM_INT);
             $query->bindValue(':description', $description, PDO::PARAM_STR);
             $query->bindValue(':puht', $puht, PDO::PARAM_STR);
             $query->bindValue(':qtestock', $qtestock, PDO::PARAM_STR);
@@ -48,10 +48,10 @@ if (!empty($_GET['articleId']) && is_numeric($_GET['articleId'])) {
             $query->bindValue(':masse', $masse, PDO::PARAM_INT);
             $query->execute();
             echo "<script>alert(`Article modifié`)</script>";
-            echo "<script>window.location.replace('http://localhost/alibobo/alibobo/index.php?page=articlesAdmin')</script>";
+            // echo "<script>window.location.replace('http://localhost/alibobo/alibobo/index.php?page=articlesAdmin')</script>";
         }
     }
-    // var_dump($query);
+    var_dump($query);
     // var_dump($catChoix);
 ?>
     <!-- on edit par exemple l'article pour poouvoir proceder à la modification -->
